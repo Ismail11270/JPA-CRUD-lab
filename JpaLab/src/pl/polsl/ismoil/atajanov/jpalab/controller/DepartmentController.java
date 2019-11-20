@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.ismoil.atajanov.jpalab.controller;
 
 
@@ -18,6 +13,7 @@ import pl.polsl.ismoil.atajanov.jpalab.view.View;
  * Containing addition fields and methods specific to Department entity
  * @see BaseController
  * @author Ismoil Atajanov
+ * @version 1.2
  */
 public class DepartmentController extends BaseController<Department> {
 
@@ -28,7 +24,6 @@ public class DepartmentController extends BaseController<Department> {
      * @param view instance of view class
      * @see View
      * @param emf instance of EntityManagerFactory class responsible for creation of EntityManager
-     * @version 1.1
      */
     public DepartmentController(View view, EntityManagerFactory emf) {
         super(view);
@@ -73,7 +68,12 @@ public class DepartmentController extends BaseController<Department> {
 
     
     
-    
+    /**
+     * Find departments by matching parameters
+     * @param departmentName piece of department name
+     * @param address piece of department address
+     * @return a list of departments matching the params
+     */
     public List<Department> findByParameters(String departmentName, String address){
         return ((DepartmentService)service).findByParemeters(departmentName,address);
     }

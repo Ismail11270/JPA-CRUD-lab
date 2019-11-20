@@ -1,20 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.ismoil.atajanov.jpalab.controller;
 
-import pl.polsl.ismoil.atajanov.jpalab.service.EntityManagerHolder;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import pl.polsl.ismoil.atajanov.jpalab.view.View;
 import pl.polsl.ismoil.atajanov.jpalab.model.Employee;
 import pl.polsl.ismoil.atajanov.jpalab.exceptions.NoEntityException;
@@ -28,11 +16,11 @@ import pl.polsl.ismoil.atajanov.jpalab.service.EmployeeService;
  *
  * @see BaseController
  * @author Ismoil Atajanov
- * @version 1.1
+ * @version 1.2
  */
 public class EmployeeController extends BaseController<Employee> {
 
-    private DepartmentService departmentService;
+    private final DepartmentService departmentService;
 
     /**
      * Constructor
@@ -48,10 +36,7 @@ public class EmployeeController extends BaseController<Employee> {
         departmentService = new DepartmentService(emf);
     }
 
-    /**
-     * @see BaseController#getEntityName()
-     * @return String name of the entity the current controller refers to
-     */
+   
     /**
      * @see BaseController#update(int id)
      * @param id id of an entity to find
@@ -62,7 +47,7 @@ public class EmployeeController extends BaseController<Employee> {
     @Override
     public boolean update(int id)
             throws NoEntityException {
-        Employee emp = new Employee();
+        Employee emp;
         emp = (Employee) service.getById(id);
         if (emp != null) {
             view.print("Current name - " + emp.getFullName() + "\nEnter a new name or leave blank to make no changes: \n");
@@ -136,6 +121,14 @@ public class EmployeeController extends BaseController<Employee> {
         }
     }
 
+   
+    /**
+     * Find employees by matching parameters
+     * @param employeeName piece of employee's name
+     * @param department employee's department
+     * @param bDate employee's date of birth
+     * @return list of employees matching the params
+     */
     public List<Employee> findByParameters(String employeeName, Department department, Date bDate) {
         return ((EmployeeService) service).findByParemeters(employeeName, department, bDate);
     }

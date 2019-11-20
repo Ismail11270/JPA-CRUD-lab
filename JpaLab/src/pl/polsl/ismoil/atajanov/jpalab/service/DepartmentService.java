@@ -15,24 +15,45 @@ import javax.persistence.criteria.Root;
 import pl.polsl.ismoil.atajanov.jpalab.model.Department;
 import pl.polsl.ismoil.atajanov.jpalab.model.Employee;
 /**
- *
+ * Implementation of BaseService class for Department
  * @author Ismail
+ * @version 1.0
  */
 public class DepartmentService extends BaseService<Department>{
 
+    /**
+     * Constructor
+     * @param emf EntityManagerFactory used to create EntityManager
+     */
     public DepartmentService(EntityManagerFactory emf){
         super(emf);
     }
-     @Override
+    
+    /**
+     * Provides access to Class of the Controller's entity
+     *
+     * @return instance of Class of currently used entity
+     */
+    @Override
     public Class getEntityClass() {
         return Department.class;
     }
 
+    /**
+     * Provides access to findAll named query of entity classes
+     *
+     * @return named query string
+     */
     @Override
     String getFindAllQuery() {
         return Department.FIND_ALL;
     }
-
+    
+    /**
+     * Provides access to a string name of the Controller's entity
+     * Generally used for displaying messages related to each entity
+     * @return a String name 
+     */
     @Override
     public String getEntityName() {
         return "Department";

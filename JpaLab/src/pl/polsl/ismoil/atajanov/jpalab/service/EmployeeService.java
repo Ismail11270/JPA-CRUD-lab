@@ -19,25 +19,45 @@ import pl.polsl.ismoil.atajanov.jpalab.exceptions.NoEntityException;
 import pl.polsl.ismoil.atajanov.jpalab.model.Department;
 import pl.polsl.ismoil.atajanov.jpalab.model.Employee;
 /**
- *
+ * Implementation of BaseService class for Employee 
  * @author Ismail
+ * @version 1.0
  */
 public class EmployeeService extends BaseService<Employee>{
 
+    /**
+     * Constructor
+     * @param emf EntityManagerFactory used to create EntityManager
+     */
     public EmployeeService(EntityManagerFactory emf){
         super(emf);
     }
     
+    /**
+     * Provides access to Class of the Controller's entity
+     *
+     * @return instance of Class of currently used entity
+     */
     @Override
     public Class getEntityClass() {
         return Employee.class;
     }
 
+    /**
+     * Provides access to findAll named query of entity classes
+     *
+     * @return named query string
+     */
     @Override
     String getFindAllQuery() {
         return Employee.FIND_ALL;
     }
 
+    /**
+     * Provides access to a string name of the Controller's entity
+     * Generally used for displaying messages related to each entity
+     * @return a String name 
+     */
     @Override
     public String getEntityName() {
         return "Employee";

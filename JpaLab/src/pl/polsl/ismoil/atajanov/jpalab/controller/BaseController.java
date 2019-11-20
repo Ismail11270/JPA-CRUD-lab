@@ -22,10 +22,13 @@ import pl.polsl.ismoil.atajanov.jpalab.view.View;
  * @see EmployeeController
  * @author Ismoil Atajanov
  * @param <T> type of the entity
- * @version 1.0
+ * @version 1.1
  */
 public abstract class BaseController<T extends Persistable> {
 
+    /**
+     * BaseService instance
+     */
     BaseService service;
 
     /**
@@ -40,7 +43,6 @@ public abstract class BaseController<T extends Persistable> {
      *
      * @param view instance of view class
      * @see View
-     * @param emf instance of EntityManagerFactory class responsible for
      * creation of EntityManager
      */
     BaseController(View view) {
@@ -57,12 +59,6 @@ public abstract class BaseController<T extends Persistable> {
     }
     
     
-    /**
-     * Provides access to a string name of the Controller's entity Generally
-     * used for displaying messages related to each entity
-     *
-     * @return a String name
-     */
     
 
     /**
@@ -94,7 +90,6 @@ public abstract class BaseController<T extends Persistable> {
     /**
      * Implementation of SQL delete operation
      *
-     * @param cls instance of Class of the entity that is going to be deleted
      * @param id id of a database entry to delete
      * @throws NoEntityException if the entry with such id doesn't exist
      */
@@ -106,7 +101,6 @@ public abstract class BaseController<T extends Persistable> {
     /**
      * Implementation of SQL SELECT operation using the primary key
      *
-     * @param entityClass instance of Class of the entity that is going to be
      * deleted
      * @param id id of the database entry to find
      * @return an entity object that was found
